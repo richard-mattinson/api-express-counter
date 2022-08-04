@@ -16,6 +16,13 @@ app.get("/counter", (request, response) => {
     response.json({ counter });
 });
 
+app.delete("/counter", (request, response) => {
+  console.log("COUNTER, GO AWAY!");
+  // response.send("I wouldn't count on it")
+  counter = 0
+  response.json({ counter });
+});
+
 const port = 3030;
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}/`);
