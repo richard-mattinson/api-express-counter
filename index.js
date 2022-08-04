@@ -40,7 +40,7 @@ app.put("/counter/increment", (request, response) => {
 // --- DECREMENT ---- 
 app.put("/counter/decrement", (request, response) => {
   console.log("COUNTER, GET EXTRA!");
-  // response.send("Count me in")
+  // response.send("Count me out")
   if(counter === 0) {
     response.send("That doesn't count!")
   } else {
@@ -52,13 +52,22 @@ app.put("/counter/decrement", (request, response) => {
 // --- DOUBLE ---- 
 app.put("/counter/double", (request, response) => {
   console.log("COUNTER, GET EXTRA!");
-  // response.send("Count me in")
+  // response.send("Count me for two")
   if(counter === 256) {
     response.send("All the colours you'll ever need")
   } else {
     counter = counter *2;
   }
   response.status(201).json({ counter });
+});
+
+// --- SET COUNTER VIA JQUERY---- 
+app.put("/counter", (request, response) => {
+    console.log("COUNTER, TIME TO VALUE");
+  // response.send("Count on it")
+    counter = Number(request.query.value)
+
+    response.status(201).json({ counter });
 });
 
 const port = 3030;
